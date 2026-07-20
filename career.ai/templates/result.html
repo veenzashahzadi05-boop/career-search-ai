@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your AI-predicted career, recommended degree program, and online courses.">
+    <title>Your Career Result | AI Career Advisor</title>
+    
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Local style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <div class="box result-box">
+            <header>
+                <div class="result-badge">Assessment Complete</div>
+                <h1>🎯 Your Career Result</h1>
+            </header>
+            
+            <div class="result-card">
+                <h2 id="result-title">Analyzing choices...</h2>
+                
+                <div class="result-details" id="result-details" style="display: none;">
+                    <div class="detail-item">
+                        <span class="detail-icon">🎓</span>
+                        <div class="detail-content">
+                            <h3>Recommended Degree</h3>
+                            <p id="degree-text"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="detail-icon">📚</span>
+                        <div class="detail-content">
+                            <h3>Suggested Courses</h3>
+                            <p id="course-text"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item quote-item">
+                        <span class="detail-icon">💡</span>
+                        <div class="detail-content">
+                            <h3>Motivation</h3>
+                            <p id="quote-text" class="quote-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="restart-btn" onclick="restart()">Restart Quiz</button>
+        </div>
+    </main>
+
+    <script>
+    // Safe storage read
+    let resultData = localStorage.getItem("result");
+
+    if (!resultData) {
+        document.getElementById("result-title").innerText = "Please take the quiz first!";
+        document.getElementById("result-title").classList.add("warning-text");
+    } else {
+        try {
+            const result = JSON.parse(resultData);
+            
+            document.getElementById("result-title").innerHTML = `Recommended Career: <span class="career-highlight">${result.career}</span>`;
+            document.getElementById("degree-text").innerText = result.degree;
+            document.getElementById("course-text").innerText = result.course;
+            document.getElementById("quote-text").innerText = result.quote;
+            
+            // Show details container
+            document.getElementById("result-details").style.display = "flex";
+        } catch(e) {
+            console.error("Error parsing result data:", e);
+            document.getElementById("result-title").innerText = "Error loading results. Please retry.";
+        }
+    }
+
+    function restart() {
+        localStorage.removeItem("result");
+        window.location.href = "/";
+    }
+    </script>
+</body>
+</html>

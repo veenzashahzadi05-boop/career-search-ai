@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover your future career path with AI Career Advisor. Get personalized suggestions for degrees and courses instantly.">
+    <title>AI Career Advisor | Discover Your Future</title>
+    
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Local style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <div class="box">
+            <header>
+                <div class="logo-badge">AI Powered</div>
+                <h1>Career AI System</h1>
+                <h2>Welcome to AI Career Advisor</h2>
+            </header>
+            
+            <section class="intro-text">
+                <p>Discover your future career with smart AI prediction.</p>
+                <p>Get personalized Degree &amp; Course suggestions instantly.</p>
+                <p class="tagline">Start now and unlock your future!</p>
+            </section>
+            
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Enter your name" aria-label="Enter your name" required>
+                <span class="focus-border"></span>
+            </div>
+            
+            <button id="start-btn" onclick="goQuiz()">Start Your Journey</button>
+        </div>
+    </main>
+
+    <script>
+    function goQuiz(){
+        const nameInput = document.getElementById("name");
+        const name = nameInput.value.trim();
+        if(!name){
+            nameInput.classList.add("input-error");
+            setTimeout(() => nameInput.classList.remove("input-error"), 500);
+            return;
+        }
+        localStorage.setItem("name", name);
+        window.location.href = "/quiz";
+    }
+    </script>
+</body>
+</html>

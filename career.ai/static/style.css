@@ -1,0 +1,375 @@
+/* Premium Styling for AI Career Advisor */
+
+:root {
+    --bg-dark: #090d16;
+    --card-bg: rgba(17, 24, 39, 0.75);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    
+    /* Interactive Colors */
+    --primary-grad: linear-gradient(135deg, #6366f1, #3b82f6);
+    --primary-glow: rgba(99, 102, 241, 0.3);
+    --accent-color: #10b981;
+    --accent-grad: linear-gradient(135deg, #10b981, #059669);
+    
+    /* Option button states */
+    --opt-bg: rgba(255, 255, 255, 0.03);
+    --opt-hover-bg: rgba(99, 102, 241, 0.1);
+    --opt-hover-border: rgba(99, 102, 241, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    /* Ambient radial backgrounds */
+    background-image: 
+        radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.05) 0px, transparent 70%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Glassmorphism Card Box */
+.box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+    border-radius: 28px;
+    padding: 48px 40px;
+    width: 100%;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(99, 102, 241, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Badge Header Elements */
+.logo-badge, .result-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 50px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
+}
+
+.result-badge {
+    background: rgba(16, 185, 129, 0.15);
+    color: #a7f3d0;
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+/* Headings */
+h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #ffffff 30%, #c7d2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 32px;
+}
+
+/* Sections & Texts */
+.intro-text {
+    margin-bottom: 36px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.intro-text p {
+    margin-bottom: 8px;
+}
+
+.intro-text .tagline {
+    color: #818cf8;
+    font-weight: 600;
+    margin-top: 14px;
+}
+
+/* Input Fields */
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #6366f1;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+/* Input Error Animation */
+.input-error {
+    border-color: #ef4444 !important;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* Buttons */
+button {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+/* Primary CTA Button */
+#start-btn, #restart-btn {
+    width: 100%;
+    padding: 16px 32px;
+    background: var(--primary-grad);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+}
+
+#start-btn:hover, #restart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5);
+    filter: brightness(1.1);
+}
+
+#start-btn:active, #restart-btn:active {
+    transform: translateY(0);
+}
+
+/* Options Panel / Quiz Page options */
+.options-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.options-container button {
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--opt-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    color: var(--text-primary);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options-container button::after {
+    content: "→";
+    opacity: 0.4;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.options-container button:hover {
+    background: var(--opt-hover-bg);
+    border-color: var(--opt-hover-border);
+    transform: translateX(4px);
+}
+
+.options-container button:hover::after {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+/* Progress indicator on quiz */
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--primary-grad);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+}
+
+.step-indicator {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.quiz-question {
+    margin-bottom: 16px;
+}
+
+/* Result Screen */
+.result-card {
+    width: 100%;
+    margin-bottom: 36px;
+}
+
+#result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.career-highlight {
+    display: block;
+    font-size: 2.25rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 8px;
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+}
+
+.warning-text {
+    color: #ef4444;
+}
+
+.result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.detail-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+}
+
+.detail-icon {
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.detail-content h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin-bottom: 2px;
+}
+
+.detail-content p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.quote-item {
+    border-left: 3px solid #6366f1;
+}
+
+.quote-text {
+    font-style: italic;
+    color: #a5b4fc;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+    .box {
+        padding: 32px 20px;
+        border-radius: 20px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .career-highlight {
+        font-size: 1.85rem;
+    }
+}
